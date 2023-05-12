@@ -1,14 +1,14 @@
 const TelegramBot = require('node-telegram-bot-api');
 
-//const express = require('express');
-//const cors = require('cors');
+const express = require('express');
+const cors = require('cors');
 
 const token = '6132392940:AAG3R5s1IK6HfOgBk2FzWNbWttXyQnWzBq0';
 const WebAppUrl = 'https://tg-bot-d412c.web.app';
-
+const app = express();
 const bot = new TelegramBot(token, {polling: true});
-// app.use(express.json());
-// app.use(cors());
+app.use(express.json());
+app.use(cors());
 
 //подсказки /...
 bot.setMyCommands([
@@ -23,7 +23,7 @@ bot.on('message', async (msg) => {
 
     if (text === '/start') {
         console.log(msg.text);
-        bot.sendMessage(chatId, "Здравствуйте!\n" +
+        await bot.sendMessage(chatId, "Здравствуйте!\n" +
             "Мы ради приветствовать Вас в нашем новом боте!", {
             reply_markup: {
                 inline_keyboard: [
@@ -63,24 +63,24 @@ bot.on('message', async (msg) => {
 });
 
 
-// app.post('/web-data', async (req, res) => {
-//     const {queryId, products = [], totalPrice} = req.body;
-//     try {
-//         await bot.answerWebAppQuery(queryId, {
-//             type: 'article',
-//             id: queryId,
-//             title: 'Успешная покупка',
-//             input_message_content: {
-//                 message_text: ` Поздравляю с покупкой, вы приобрели товар на сумму ${totalPrice}, ${products.map(item => item.title).join(', ')}`
-//             }
-//         })
-//         return res.status(200).json({});
-//     } catch (e) {
-//         return res.status(500).json({})
-//     }
-// })
-//
-// const PORT = 8000;
-//
-// app.listen(PORT, () => console.log('server started on PORT ' + PORT))
+app.post('/web-data', async (req, res) => {
+    const {queryId, products = [], totalPrice} = req.body;
+    try {
+        await bot.answerWebAppQuery(queryId, {
+            type: 'article',
+            id: queryId,
+            title: 'Успешная покупка',
+            input_message_content: {
+                message_text: ` Поздравляю с покупкой, вы приобрели товар на сумму ${totalPrice}, ${products.map(item => item.title).join(', ')}`
+            }
+        })
+        return res.status(200).json({});
+    } catch (e) {
+        return res.status(500).json({})
+    }
+})
+
+const PORT = 8000;
+
+app.listen(PORT, () => console.log('server started on PORT ' + PORT))
 
