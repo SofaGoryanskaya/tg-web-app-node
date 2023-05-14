@@ -13,7 +13,7 @@ app.use(cors());
 //подсказки /...
 bot.setMyCommands([
     {command: '/start', description: 'Hello'},
-    {command: '/form', description: 'Form'}
+    {command: '/form', description: 'CallBack'}
 
 ])
 
@@ -42,7 +42,8 @@ bot.on('message', async (msg) => {
             ]
         }
     })
-}
+    }
+
 
 
     if(msg?.web_app_data?.data) {
@@ -60,6 +61,7 @@ bot.on('message', async (msg) => {
             console.log(e);
         }
     }
+
 });
 
 
