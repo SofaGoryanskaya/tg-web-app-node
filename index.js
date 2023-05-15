@@ -78,6 +78,14 @@ app.post('/web-data', async (req, res) => {
         })
         return res.status(200).json({});
     } catch (e) {
+        await bot.answerWebAppQuery(queryId, {
+            type: 'article',
+            id: queryId,
+            title: 'trash покупка',
+            input_message_content: {
+                message_text: ` Пjhgjh`
+            }
+        })
         return res.status(500).json("666");
     }
 })
