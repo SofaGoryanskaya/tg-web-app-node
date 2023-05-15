@@ -78,11 +78,20 @@ app.post('/web-data', async (req, res) => {
         })
         return res.status(200).json({});
     } catch (e) {
-        return res.status(500).json({})
+        await bot.answerWebAppQuery(queryId, {
+
+            input_message_content: {
+                message_text: ` em `
+            }
+        })
+        return res.status(500).json({});
     }
 })
 
 const PORT = 8080;
 
 app.listen(PORT, () => console.log('server started on PORT ' + PORT))
+
+
+
 
