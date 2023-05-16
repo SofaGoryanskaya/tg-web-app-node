@@ -27,10 +27,9 @@ bot.on('message', async (msg) => {
             "Мы ради приветствовать Вас в нашем новом боте!", {
             reply_markup: {
                 inline_keyboard: [
-                    [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
+
                     [{text: 'Профиль', web_app: {url: WebAppUrl + '/prof'}}],
                     [{text: 'Корзина', web_app: {url: WebAppUrl}}],
-                    [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}]
                 ]
             }
         })
@@ -39,13 +38,12 @@ bot.on('message', async (msg) => {
         await bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
         reply_markup: {
             keyboard: [
+                [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
                 [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}]
             ]
         }
     })
     }
-
-
 
     if(msg?.web_app_data?.data) {
         try {
