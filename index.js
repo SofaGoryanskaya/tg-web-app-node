@@ -30,7 +30,8 @@ bot.on('message', async (msg) => {
 
                     [{text: 'Профиль', web_app: {url: WebAppUrl + '/prof'}}],
                     [{text: 'Корзина', web_app: {url: WebAppUrl}}],
-                    [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}]
+                    [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}]
+
                 ]
             }
         })
@@ -39,7 +40,7 @@ bot.on('message', async (msg) => {
         await bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
         reply_markup: {
             keyboard: [
-                [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}]
+                [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}]
 
             ]
         }
