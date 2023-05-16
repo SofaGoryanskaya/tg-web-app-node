@@ -56,7 +56,7 @@ bot.on('message', async (msg) => {
 
             setTimeout(async () => {
                 await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
-            }, 3000)
+            }, 2000)
         } catch (e) {
             console.log(e);
         }
@@ -67,6 +67,7 @@ bot.on('message', async (msg) => {
 
 app.post('/web-data', async (req, res) => {
     const {queryId} = req.body;
+    console.log(req.body);
     try {
         await bot.answerWebAppQuery(queryId, {
             type: 'article',
