@@ -29,7 +29,8 @@ bot.on('message', async (msg) => {
                 inline_keyboard: [
                     [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
                     [{text: 'Профиль', web_app: {url: WebAppUrl + '/prof'}}],
-                    [{text: 'Корзина', web_app: {url: WebAppUrl}}]
+                    [{text: 'Корзина', web_app: {url: WebAppUrl}}],
+                    [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}]
                 ]
             }
         })
