@@ -88,6 +88,19 @@ app.post('/web-data', async (req, res) => {
     }
 })
 
+app.get('/buy/:id', async (req, res) => {
+    /* парсим тело req (или скорее всего сам url) */
+    console.log(req)
+    await  bot.sendMessage(1035730958,
+        // id: queryId,
+        // title: 'Успешная покупка',
+        'cool'
+        // message_text: ` Поздравляю с покупкой, вы приобрели товар на сумму ${totalPrice}, ${products.map(item => item.title).join(', ')}`
+
+    )
+    return res.status(200).json("es");
+})
+
 const PORT = 8080;
 
 app.listen(PORT, () => console.log('server started on PORT ' + PORT))
