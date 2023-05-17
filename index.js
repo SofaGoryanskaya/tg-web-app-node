@@ -30,7 +30,8 @@ bot.on('message', async (msg) => {
 
                     [{text: 'Профиль', web_app: {url: WebAppUrl + '/prof'}}],
                     [{text: 'Корзина', web_app: {url: WebAppUrl}}],
-                    [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}]
+                    [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
+                    [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}]
 
                 ]
             }
