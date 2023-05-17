@@ -12,8 +12,8 @@ app.use(cors());
 
 //подсказки /...
 bot.setMyCommands([
-    {command: '/start', description: 'Hello'},
-    {command: '/form', description: 'CallBack'}
+    {command: '/start', description: 'Для заказа'},
+    // {command: '/form', description: 'CallBack'}
 
 ])
 
@@ -29,24 +29,24 @@ bot.on('message', async (msg) => {
                 inline_keyboard: [
 
                     [{text: 'Визитка', web_app: {url: WebAppUrl + '/main'}}],
-                    [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
-                    [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}]
+                    // [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
+                    [{text: 'Меню', web_app: {url: WebAppUrl + '/form'}}]
 
                 ]
             }
         })
     }
-    if(text === '/form') {
-        console.log(msg.text);
-        await bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
-            reply_markup: {
-                keyboard: [
-                    [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}],
-
-                ]
-            }
-        })
-    }
+    // if(text === '/form') {
+    //     console.log(msg.text);
+    //     await bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
+    //         reply_markup: {
+    //             keyboard: [
+    //                 [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}],
+    //
+    //             ]
+    //         }
+    //     })
+    // }
 
 
     if(msg?.web_app_data?.data) {
@@ -56,10 +56,6 @@ bot.on('message', async (msg) => {
             await bot.sendMessage(chatId, 'Спасибо за обратную связь!');
             await bot.sendMessage(chatId, 'Ваша страна: ' + data?.country);
              await bot.sendMessage(chatId, 'Ваша улица: ' + data?.totalPrice);
-
-            setTimeout(async () => {
-                await bot.sendMessage(chatId, 'Всю информацию вы получите в этом чате');
-            }, 2000)
         } catch (e) {
             console.log(e);
         }
@@ -88,18 +84,18 @@ app.post('/web-data', async (req, res) => {
     }
 })
 
-app.get('/buy/:id', async (req, res) => {
-    /* парсим тело req (или скорее всего сам url) */
-    console.log(req)
-    await  bot.sendMessage(1035730958,
-        // id: queryId,
-        // title: 'Успешная покупка',
-        'cool'
-        // message_text: ` Поздравляю с покупкой, вы приобрели товар на сумму ${totalPrice}, ${products.map(item => item.title).join(', ')}`
-
-    )
-    return res.status(200).json("es");
-})
+// app.get('/buy/:id', async (req, res) => {
+//     /* парсим тело req (или скорее всего сам url) */
+//     console.log(req)
+//     await  bot.sendMessage(1035730958,
+//         // id: queryId,
+//         // title: 'Успешная покупка',
+//         'cool'
+//         // message_text: ` Поздравляю с покупкой, вы приобрели товар на сумму ${totalPrice}, ${products.map(item => item.title).join(', ')}`
+//
+//     )
+//     return res.status(200).json("es");
+// })
 
 const PORT = 8080;
 
