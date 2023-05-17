@@ -37,17 +37,7 @@ bot.on('message', async (msg) => {
             }
         })
     }
-    if(text === '/form') {
-        await bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
-        reply_markup: {
-            keyboard: [
-                [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}],
-                [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
 
-            ]
-        }
-    })
-    }
 
     if(msg?.web_app_data?.data) {
         try {
