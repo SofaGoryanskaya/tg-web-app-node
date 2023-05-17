@@ -38,6 +38,7 @@ bot.on('message', async (msg) => {
         })
     }
     if(text === '/form') {
+        console.log(msg.text);
         await bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
             reply_markup: {
                 keyboard: [
@@ -65,6 +66,7 @@ bot.on('message', async (msg) => {
             console.log(e);
         }
     }
+
 
 });
 
