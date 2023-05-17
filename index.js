@@ -71,7 +71,6 @@ app.post('/web-data', async (req, res) => {
     console.log(req.body);
     try {
         await bot.answerWebAppQuery(queryId, {
-            type: 'article',
             id: queryId,
             title: 'Успешная покупка',
             input_message_content: {
