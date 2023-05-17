@@ -28,8 +28,7 @@ bot.on('message', async (msg) => {
             reply_markup: {
                 inline_keyboard: [
 
-                    [{text: 'Профиль', web_app: {url: WebAppUrl + '/prof'}}],
-                    [{text: 'Корзина', web_app: {url: WebAppUrl}}],
+                    [{text: 'Визитка', web_app: {url: WebAppUrl + '/main'}}],
                     [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
                     [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}]
 
@@ -43,7 +42,6 @@ bot.on('message', async (msg) => {
             reply_markup: {
                 keyboard: [
                     [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}],
-                    [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
 
                 ]
             }
@@ -72,8 +70,7 @@ bot.on('message', async (msg) => {
 
 
 app.post('/web-data', async (req, res) => {
-    const {queryId} = req.body;
-    console.log(req.body);
+    const {queryId, products = [], totalPrice} = req.body;
     try {
         await bot.sendMessage(queryId,
             // id: queryId,
