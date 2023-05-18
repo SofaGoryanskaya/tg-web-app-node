@@ -12,7 +12,7 @@ app.use(cors());
 
 //подсказки /...
 bot.setMyCommands([
-    {command: '/start', description: 'Для заказа'},
+    {command: '/start', description: 'Главное меню'},
     // {command: '/form', description: 'CallBack'}
 
 ])
@@ -54,8 +54,11 @@ bot.on('message', async (msg) => {
             const data = JSON.parse(msg?.web_app_data?.data)
             console.log(data)
             await bot.sendMessage(chatId, 'Спасибо за обратную связь!');
-            await bot.sendMessage(chatId, 'Ваша страна: ' + data?.country);
-             await bot.sendMessage(chatId, 'Ваша улица: ' + data?.street);
+            await bot.sendMessage(chatId, 'Ваша номер: ' + data?.number);
+             await bot.sendMessage(chatId, 'Ваша comment: ' + data?.comment);
+            await bot.sendMessage(chatId, 'Ваша subjectONE: ' + data?.subjectONE);
+            await bot.sendMessage(chatId, 'Ваша subjectTWO: ' + data?.subjectTWO);
+
         } catch (e) {
             console.log(e);
         }
