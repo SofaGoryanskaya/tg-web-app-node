@@ -59,7 +59,7 @@ bot.on('message', async (msg) => {
                 'Оплата: ' + data?.subjectTWO + '\n' +
                 'Способ получения: ' + data?.subjectONE + '\n' +
                 'Комментарий: ' + data?.comment + '\n' +
-                'Дата и время заказа ?????: ' + data?.dataMsg
+                'Дата и время заказа: ' + data?.dataMsg
             );
              // await bot.sendMessage(chatId, 'Ваша comment: ' + data?.comment);
             // await bot.sendMessage(chatId, 'Ваша subjectONE: ' + data?.subjectONE);
