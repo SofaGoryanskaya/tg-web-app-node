@@ -53,11 +53,17 @@ bot.on('message', async (msg) => {
         try {
             const data = JSON.parse(msg?.web_app_data?.data)
             console.log(data)
-            await bot.sendMessage(chatId, 'Спасибо за обратную связь!');
-            await bot.sendMessage(chatId, 'Ваша номер: ' + data?.number + 'Ваша comment: ' + data?.comment);
-             await bot.sendMessage(chatId, 'Ваша comment: ' + data?.comment);
-            await bot.sendMessage(chatId, 'Ваша subjectONE: ' + data?.subjectONE);
-            await bot.sendMessage(chatId, 'Ваша subjectTWO: ' + data?.subjectTWO);
+            await bot.sendMessage(chatId, 'Ваш заказ принят. Спасибо, что выбераете нас!');
+            await bot.sendMessage(chatId, "Номер заказа: ???" + '\n' +
+                'Телефон: ' + data?.number + '\n' +
+                'Оплата: ' + data?.subjectTWO + '\n' +
+                'Способ получения: ' + data?.subjectONE + '\n' +
+                'Комментарий: ' + data?.comment + '\n' +
+                'Дата и время заказа ?????: '
+            );
+             // await bot.sendMessage(chatId, 'Ваша comment: ' + data?.comment);
+            // await bot.sendMessage(chatId, 'Ваша subjectONE: ' + data?.subjectONE);
+            // await bot.sendMessage(chatId, 'Ваша subjectTWO: ' + data?.subjectTWO);
 
         } catch (e) {
             console.log(e);
