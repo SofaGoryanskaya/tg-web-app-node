@@ -54,7 +54,7 @@ bot.on('message', async (msg) => {
             const data = JSON.parse(msg?.web_app_data?.data)
             console.log(data)
             await bot.sendMessage(chatId, 'Ваш заказ принят. Спасибо, что выбераете нас!');
-            await bot.sendMessage(chatId, "Номер заказа: ???" + '\n' +
+            await bot.sendMessage(chatId, "Номер заказа: № " + datd?.numberOrder +  '\n' +
                 'Телефон: ' + data?.number + '\n' +
                 'Оплата: ' + data?.subjectTWO + '\n' +
                 'Способ получения: ' + data?.subjectONE + '\n' +
