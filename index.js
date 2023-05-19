@@ -25,7 +25,7 @@ bot.on('message', async (msg) => {
     if (text === '/start') {
         console.log(msg.text);
         await bot.sendMessage(chatId, "Здравствуйте!\n" +
-            "Мы ради приветствовать Вас в нашем новом боте! Выберите интересуюший для вас раздел", {
+            "Мы ради приветствовать Вас в нашем новом боте!\n Выберите интересуюший для вас раздел: ", {
             reply_markup: {
                 inline_keyboard: [
                     [{text: 'Визитка', web_app: {url: WebAppUrl + '/main'}}],
@@ -62,18 +62,8 @@ bot.on('message', async (msg) => {
             "Кофе — лучшая когда-либо созданная органическая смесь." + '\n' +
             " –  Звёздный Путь, Вояджер\n", {
             reply_markup: {
-                keyboard: [
+                inline_keyboard: [
                     [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/main'}}],
-                ]
-            }
-        })
-    } if(text === '/order') {
-        console.log(msg.text);
-        await bot.sendMessage(chatId, 'Приятных покупок' + '\n' +
-            "Ниже появится кнопка для оформления заказа", {
-            reply_markup: {
-                keyboard: [
-                    [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/form'}}],
                 ]
             }
         })
