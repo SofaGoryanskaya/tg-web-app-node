@@ -63,7 +63,7 @@ bot.on('message', async (msg) => {
             );
             setTimeout(async () => {
                 await bot.sendMessage(chatId, 'Ваш заказ №' + data?.numberOrder + "готов");
-            }, 3000)
+            }, 5000)
              // await bot.sendMessage(chatId, 'Ваша comment: ' + data?.comment);
             // await bot.sendMessage(chatId, 'Ваша subjectONE: ' + data?.subjectONE);
             // await bot.sendMessage(chatId, 'Ваша subjectTWO: ' + data?.subjectTWO);
