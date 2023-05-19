@@ -12,9 +12,10 @@ app.use(cors());
 
 //подсказки /...
 bot.setMyCommands([
-    {command: '/start', description: 'Главное меню'},
-    // {command: '/form', description: 'CallBack'}
-
+    {command: '/start', description: 'Приветствие'},
+    {command: '/menu', description: 'Главное меню'},
+    {command: '/businessСard', description: 'Визитка'},
+    {command: '/order', description: 'Оформить заказ'}
 ])
 
 bot.on('message', async (msg) => {
@@ -24,29 +25,59 @@ bot.on('message', async (msg) => {
     if (text === '/start') {
         console.log(msg.text);
         await bot.sendMessage(chatId, "Здравствуйте!\n" +
-            "Мы ради приветствовать Вас в нашем новом боте!", {
+            "Мы ради приветствовать Вас в нашем новом боте! Выберите интересуюший для вас раздел", {
             reply_markup: {
                 inline_keyboard: [
-
                     [{text: 'Визитка', web_app: {url: WebAppUrl + '/main'}}],
-                    // [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
-                    [{text: 'Меню', web_app: {url: WebAppUrl + '/form'}}]
-
+                    [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/form'}}],
+                    [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}]
                 ]
             }
         })
     }
-    // if(text === '/form') {
-    //     console.log(msg.text);
-    //     await bot.sendMessage(chatId, 'Ниже появится кнопка, заполни форму', {
-    //         reply_markup: {
-    //             keyboard: [
-    //                 [{text: 'Заполнить форму', web_app: {url: WebAppUrl + '/form'}}],
-    //
-    //             ]
-    //         }
-    //     })
-    // }
+
+    if (text === '/menu') {
+        console.log(msg.text);
+        await bot.sendMessage(chatId, "Актуальное меню на данный момент", {
+            reply_markup: {
+                inline_keyboard: [
+                    [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}]
+                ]
+            }
+        })
+    }
+    if(text === '/order') {
+        console.log(msg.text);
+        await bot.sendMessage(chatId, 'Приятных покупок' + '\n' +
+            "Ниже появится кнопка для оформления заказа", {
+            reply_markup: {
+                keyboard: [
+                    [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/form'}}],
+                ]
+            }
+        })
+    } if(text === '/businessСard') {
+        console.log(msg.text);
+        await bot.sendMessage(chatId, 'Визитка нашей кофейни' + '\n' +
+            "Кофе — лучшая когда-либо созданная органическая смесь." + '\n' +
+            " –  Звёздный Путь, Вояджер\n", {
+            reply_markup: {
+                keyboard: [
+                    [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/main'}}],
+                ]
+            }
+        })
+    } if(text === '/order') {
+        console.log(msg.text);
+        await bot.sendMessage(chatId, 'Приятных покупок' + '\n' +
+            "Ниже появится кнопка для оформления заказа", {
+            reply_markup: {
+                keyboard: [
+                    [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/form'}}],
+                ]
+            }
+        })
+    }
 
 
     if(msg?.web_app_data?.data) {
@@ -65,9 +96,6 @@ bot.on('message', async (msg) => {
                 await bot.sendMessage(chatId, 'Ваш заказ №' + data?.numberOrder + " готов" + '\n' +
                 "Cделано с любовью ☕️");
             }, 5000)
-             // await bot.sendMessage(chatId, 'Ваша comment: ' + data?.comment);
-            // await bot.sendMessage(chatId, 'Ваша subjectONE: ' + data?.subjectONE);
-            // await bot.sendMessage(chatId, 'Ваша subjectTWO: ' + data?.subjectTWO);
 
         } catch (e) {
             console.log(e);
