@@ -15,7 +15,8 @@ bot.setMyCommands([
     {command: '/start', description: 'Приветствие'},
     {command: '/menu', description: 'Главное меню'},
     {command: '/businessCard', description: 'Визитка кофейни'},
-    {command: '/order', description: 'Оформить заказ'}
+    {command: '/order', description: 'Оформить заказ'},
+    {command: '/contacts', description: 'Оформить заказ'}
 ])
 
 bot.on('message', async (msg) => {
@@ -29,13 +30,16 @@ bot.on('message', async (msg) => {
             reply_markup: {
                 inline_keyboard: [
                     [{text: 'Визитка', web_app: {url: WebAppUrl + '/main'}}],
-                    [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/form'}}],
+                    // [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/form'}}],
                     [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
                     [{text: 'Наши контакты', web_app: {url: WebAppUrl + '/map'}}],
-                    [{text: 'для проверки', web_app: {url: WebAppUrl + '/prof'}}]
+                    // [{text: 'для проверки', web_app: {url: WebAppUrl + '/prof'}}]
                 ]
             }
         })
+        setTimeout(async () => {
+            await bot.sendMessage(chatId, "Для оформления пропишите команду: /order");
+        }, 500)
     }
 
     if (text === '/menu') {
@@ -69,7 +73,17 @@ bot.on('message', async (msg) => {
                 ]
             }
         })
+    } if(text === '/contacts') {
+        console.log(msg.text);
+        await bot.sendMessage(chatId, 'Мы всегда будем рады Вас видеть: ', {
+            reply_markup: {
+                inline_keyboard: [
+                    [{text: 'Наши контакты', web_app: {url: WebAppUrl + '/map'}}],
+                ]
+            }
+        })
     }
+
 
 
     if(msg?.web_app_data?.data) {
