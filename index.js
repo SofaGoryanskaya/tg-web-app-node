@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 
 const token = '6063644412:AAENGNmI3Mh-RTeaFUj5jM12l9fsenSLekE';
-const WebAppUrl = 'http://217.71.129.139:5529/';
+const WebAppUrl = 'https://tg-bot-2-a0669.web.app';
 const app = express();
 const bot = new TelegramBot(token, {polling: true});
 app.use(express.json());
