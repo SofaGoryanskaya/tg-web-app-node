@@ -30,7 +30,7 @@ bot.on('message', async (msg) => {
             reply_markup: {
                 inline_keyboard: [
                     [{text: 'Визитка', web_app: {url: WebAppUrl + '/main'}}],
-                    // [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/form'}}],
+                    [{text: 'Оформить заказ - прототип для приложения', web_app: {url: WebAppUrl + '/formcheck'}}],
                     [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
                     [{text: 'Наши контакты', web_app: {url: WebAppUrl + '/map'}}],
                     // [{text: 'для проверки', web_app: {url: WebAppUrl + '/prof'}}]
