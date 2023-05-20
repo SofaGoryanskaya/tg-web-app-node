@@ -3,7 +3,7 @@ const TelegramBot = require('node-telegram-bot-api');
 const express = require('express');
 const cors = require('cors');
 
-const token = '6063644412:AAENGNmI3Mh-RTeaFUj5jM12l9fsenSLekE';
+const token = '6279893415:AAEGEFObYlSgdfW8z5rpKoIXxuoPgGn2qBY';
 const WebAppUrl = 'https://tg-bot-2-a0669.web.app';
 const app = express();
 const bot = new TelegramBot(token, {polling: true});
