@@ -14,7 +14,7 @@ app.use(cors());
 bot.setMyCommands([
     {command: '/start', description: 'Приветствие'},
     {command: '/menu', description: 'Главное меню'},
-    {command: '/businessСard', description: 'Визитка'},
+    {command: '/businessCard', description: 'Визитка'},
     {command: '/order', description: 'Оформить заказ'}
 ])
 
@@ -30,7 +30,8 @@ bot.on('message', async (msg) => {
                 inline_keyboard: [
                     [{text: 'Визитка', web_app: {url: WebAppUrl + '/main'}}],
                     [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/form'}}],
-                    [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}]
+                    [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
+                    [{text: 'Наши контакты', web_app: {url: WebAppUrl + '/map'}}]
                 ]
             }
         })
@@ -63,7 +64,7 @@ bot.on('message', async (msg) => {
             " –  Звёздный Путь, Вояджер\n", {
             reply_markup: {
                 inline_keyboard: [
-                    [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/main'}}],
+                    [{text: 'Визитка', web_app: {url: WebAppUrl + '/main'}}],
                 ]
             }
         })
