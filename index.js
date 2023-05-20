@@ -57,7 +57,7 @@ bot.on('message', async (msg) => {
                 ]
             }
         })
-    } if(text === '/businessСard') {
+    } if(text === '/business_card') {
         console.log(msg.text);
         await bot.sendMessage(chatId, 'Визитка нашей кофейни' + '\n' +
             "Кофе — лучшая когда-либо созданная органическая смесь." + '\n' +
