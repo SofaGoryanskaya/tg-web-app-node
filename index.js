@@ -14,7 +14,7 @@ app.use(cors());
 bot.setMyCommands([
     {command: '/start', description: 'Приветствие'},
     {command: '/menu', description: 'Главное меню'},
-    {command: '/businessCard', description: 'Визитка'},
+    {command: '/businessCard', description: 'Визитка кофейни'},
     {command: '/order', description: 'Оформить заказ'}
 ])
 
