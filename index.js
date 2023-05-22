@@ -41,7 +41,7 @@ bot.on('message', async (msg) => {
         }, 500)
     }
 
-    if (text === '/menu') {
+    else if (text === '/menu') {
         console.log(msg.text);
         await bot.sendMessage(chatId, "Актуальное меню на данный момент", {
             reply_markup: {
@@ -51,7 +51,7 @@ bot.on('message', async (msg) => {
             }
         })
     }
-    if(text === '/orderweb') {
+    else if(text === '/orderweb') {
         console.log(msg.text);
         await bot.sendMessage(chatId, 'Приятных покупок' + '\n' +
             "Ниже появится кнопка для оформления заказа", {
@@ -61,7 +61,7 @@ bot.on('message', async (msg) => {
                 ]
             }
         })
-    } if(text === '/business_card') {
+    } else if(text === '/business_card') {
         console.log(msg.text);
         await bot.sendMessage(chatId, 'Визитка нашей кофейни' + '\n' +
             "Кофе — лучшая когда-либо созданная органическая смесь." + '\n' +
@@ -72,7 +72,7 @@ bot.on('message', async (msg) => {
                 ]
             }
         })
-    } if(text === '/contacts') {
+    } else if(text === '/contacts') {
         console.log(msg.text);
         await bot.sendMessage(chatId, 'Мы всегда будем рады Вас видеть: ', {
             reply_markup: {
@@ -81,11 +81,11 @@ bot.on('message', async (msg) => {
                 ]
             }
         })
-    }if(text === '/order') {
+    }else if(text === '/order') {
         console.log(msg.text);
         await bot.sendMessage(chatId, 'Приятных покупок', {
             reply_markup: {
-                keyboard: [
+                inline_keyboard: [
                     [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/checkF'}}],
                 ]
             }
@@ -99,7 +99,7 @@ bot.on('message', async (msg) => {
             "/contacts - Контакты \n" +
             "/orderweb - Оформить заказа с браузера");
     } else {
-        await bot.sendMessage(chatId, 'Сообщение не распзнано')
+        await bot.sendMessage(chatId, 'Сообщение не распознано')
     }
 
 
