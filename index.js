@@ -30,15 +30,14 @@ bot.on('message', async (msg) => {
             reply_markup: {
                 inline_keyboard: [
                     [{text: 'Визитка', web_app: {url: WebAppUrl + '/main'}}],
-                    [{text: 'Оформить заказ - прототип для приложения', web_app: {url: WebAppUrl + '/checkF'}}],
                     [{text: 'Меню', web_app: {url: WebAppUrl + '/menu'}}],
                     [{text: 'Наши контакты', web_app: {url: WebAppUrl + '/map'}}],
-                    // [{text: 'для проверки', web_app: {url: WebAppUrl + '/prof'}}]
+                    [{text: 'Оформить заказ - прототип для приложения', web_app: {url: WebAppUrl + '/checkF'}}],
                 ]
             }
         })
         setTimeout(async () => {
-            await bot.sendMessage(chatId, "Для оформления пропишите команду: /order");
+            await bot.sendMessage(chatId, "Для оформления заказа с браузера - пропишите команду: /orderweb");
         }, 500)
     }
 
@@ -52,7 +51,7 @@ bot.on('message', async (msg) => {
             }
         })
     }
-    if(text === '/order') {
+    if(text === '/orderweb') {
         console.log(msg.text);
         await bot.sendMessage(chatId, 'Приятных покупок' + '\n' +
             "Ниже появится кнопка для оформления заказа", {
@@ -82,6 +81,25 @@ bot.on('message', async (msg) => {
                 ]
             }
         })
+    }if(text === '/order') {
+        console.log(msg.text);
+        await bot.sendMessage(chatId, 'Приятных покупок', {
+            reply_markup: {
+                keyboard: [
+                    [{text: 'Оформить заказ', web_app: {url: WebAppUrl + '/checkF'}}],
+                ]
+            }
+        })
+    } else if (text === '/*'){
+        await bot.sendMessage(chatId, 'Визитка нашей кофейни' + '\n' +
+            "/start - Приветсвтие \n" +
+            "/menu - Главное меню\n" +
+            "/order - Оформить заказ с приложения \n" +
+            "/business_card - Визитка\n" +
+            "/contacts - Контакты \n" +
+            "/orderweb - Оформить заказа с браузера");
+    } else {
+        await bot.sendMessage(chatId, 'Сообщение не распзнано')
     }
 
 
