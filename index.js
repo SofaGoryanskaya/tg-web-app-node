@@ -90,7 +90,7 @@ bot.on('message', async (msg) => {
                 ]
             }
         })
-    } else if (text === '/*'){
+    } else if (text === '/.'){
         await bot.sendMessage(chatId, 'Визитка нашей кофейни' + '\n' +
             "/start - Приветсвтие \n" +
             "/menu - Главное меню\n" +
