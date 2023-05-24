@@ -91,7 +91,7 @@ bot.on('message', async (msg) => {
             }
         })
     } else if (text.indexOf('/') !== -1){
-        await bot.sendMessage(chatId, 'Такой команды не сущесствует' + '\n' +
+        await bot.sendMessage(chatId, 'Такой команды не существует' + '\n' +
             "/start - Приветсвтие \n" +
             "/menu - Главное меню\n" +
             "/order - Оформить заказ с приложения \n" +
