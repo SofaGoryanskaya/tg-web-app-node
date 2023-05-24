@@ -91,7 +91,7 @@ bot.on('message', async (msg) => {
             }
         })
     } else if (text.indexOf('/') !== -1){
-        await bot.sendMessage(chatId, 'Визитка нашей кофейни' + '\n' +
+        await bot.sendMessage(chatId, 'Такой команды не сущесствует' + '\n' +
             "/start - Приветсвтие \n" +
             "/menu - Главное меню\n" +
             "/order - Оформить заказ с приложения \n" +
@@ -101,7 +101,6 @@ bot.on('message', async (msg) => {
     } else {
         await bot.sendMessage(chatId, 'Сообщение не распознано')
     }
-
 
 
     if(msg?.web_app_data?.data) {
