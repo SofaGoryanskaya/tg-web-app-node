@@ -23,6 +23,28 @@ bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
     const text = msg.text;
 
+    if(msg?.web_app_data?.data) {
+        try {
+            const data = JSON.parse(msg?.web_app_data?.data)
+            console.log(data)
+            await bot.sendMessage(chatId, 'Ваш заказ принят. Спасибо, что выбераете нас!');
+            await bot.sendMessage(chatId, "Номер заказа: № " + data?.numberOrder +  '\n' +
+                'Телефон: ' + data?.number + '\n' +
+                'Оплата: ' + data?.subjectTWO + '\n' +
+                'Способ получения: ' + data?.subjectONE + '\n' +
+                'Комментарий: ' + data?.comment + '\n' +
+                'Дата и время заказа: ' + data?.dataMsg
+            );
+            setTimeout(async () => {
+                await bot.sendMessage(chatId, 'Ваш заказ №' + data?.numberOrder + " готов" + '\n' +
+                    "Cделано с любовью ☕️");
+            }, 5000)
+
+        } catch (e) {
+            console.log(e);
+        }
+    }
+
     if (text === '/start') {
         console.log(msg.text);
         await bot.sendMessage(chatId, "Здравствуйте!\n" +
@@ -103,29 +125,8 @@ bot.on('message', async (msg) => {
     }
 
 
-    if(msg?.web_app_data?.data) {
-        try {
-            const data = JSON.parse(msg?.web_app_data?.data)
-            console.log(data)
-            await bot.sendMessage(chatId, 'Ваш заказ принят. Спасибо, что выбераете нас!');
-            await bot.sendMessage(chatId, "Номер заказа: № " + data?.numberOrder +  '\n' +
-                'Телефон: ' + data?.number + '\n' +
-                'Оплата: ' + data?.subjectTWO + '\n' +
-                'Способ получения: ' + data?.subjectONE + '\n' +
-                'Комментарий: ' + data?.comment + '\n' +
-                'Дата и время заказа: ' + data?.dataMsg
-            );
-            setTimeout(async () => {
-                await bot.sendMessage(chatId, 'Ваш заказ №' + data?.numberOrder + " готов" + '\n' +
-                "Cделано с любовью ☕️");
-            }, 5000)
 
-        } catch (e) {
-            console.log(e);
-        }
-    }
 });
-
 
 app.post('/web-data', async (req, res) => {
     const {queryId, products = [], totalPrice} = req.body;
