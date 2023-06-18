@@ -113,16 +113,16 @@ bot.on('message', async (msg) => {
             }
         })
     }
-    else if((text === '/helpchoice') || (text.indexOf('омо') !== -1) || (text.indexOf('не зна') !== -1)) {
+    else if(text === '/helpchoice') {
         console.log(msg.text);
         await bot.sendMessage(chatId, 'Что бы выхотели? Горячее или холодное?');
-
     }
+
     else if ((text === "горячее") || (text === "Горячее") ) {
         await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе?');
-
     }
-    if (text==='да'){
+
+    else if (text==='да'){
         await bot.sendMessage(chatId, 'Категории напитков, которуые могут вам понравиться, предаставлены ниже', {
             reply_markup: {
                 inline_keyboard: [
@@ -150,7 +150,9 @@ bot.on('message', async (msg) => {
             "/order - Оформить заказ с приложения \n" +
             "/business_card - Визитка\n" +
             "/contacts - Контакты \n" +
-            "/orderweb - Оформить заказа с браузера");
+            "/helpchoice - Помощь с выбором\n" +
+            "/orderweb - Оформить заказа с браузера"
+        );
     } else {
         await bot.sendMessage(chatId, 'Сообщение не распознано')
     }
