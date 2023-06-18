@@ -122,7 +122,7 @@ bot.on('message', async (msg) => {
         await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе? Да или нет?');
     }
 
-    else if ((text==='да') || (text==='Да')){
+    else if ((text === "да") || (text === "Да") ) {
         await bot.sendMessage(chatId, 'Категории напитков, которуые могут вам понравиться, предаставлены ниже', {
             reply_markup: {
                 inline_keyboard: [
