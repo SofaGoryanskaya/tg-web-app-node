@@ -116,21 +116,21 @@ bot.on('message', async (msg) => {
     else if((text === '/helpchoice') || (text.indexOf('омо') !== -1) || (text.indexOf('не зна') !== -1)) {
         console.log(msg.text);
         await bot.sendMessage(chatId, 'Что бы выхотели? Горячее или холодное?');
-        if (text === "горячее") {
-            await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе?');
-            if (text==='да'){
-                await bot.sendMessage(chatId, 'Категории напитков, которуые могут вам понравиться, предаставлены ниже', {
-                    reply_markup: {
-                        inline_keyboard: [
-                            [{text: 'Авторский кофе', web_app: {url: WebAppUrl + '/https://tg-bot-2-a0669.web.app/author_coffee'}}],
-                            [{text: 'Классический кофе', web_app: {url: WebAppUrl + '/checkF'}}],
-                        ]
-                    }
-                })
-            }
+
+    }
+    else if (text === "горячее") {
+        await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе?');
+        if (text==='да'){
+            await bot.sendMessage(chatId, 'Категории напитков, которуые могут вам понравиться, предаставлены ниже', {
+                reply_markup: {
+                    inline_keyboard: [
+                        [{text: 'Авторский кофе', web_app: {url: WebAppUrl + '/https://tg-bot-2-a0669.web.app/author_coffee'}}],
+                        [{text: 'Классический кофе', web_app: {url: WebAppUrl + '/checkF'}}],
+                    ]
+                }
+            })
         }
     }
-
     else if (text.indexOf('/') !== -1){
         await bot.sendMessage(chatId, 'Такой команды не существует' + '\n' +
             "/start - Приветсвтие \n" +
