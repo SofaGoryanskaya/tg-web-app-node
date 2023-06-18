@@ -118,19 +118,31 @@ bot.on('message', async (msg) => {
         await bot.sendMessage(chatId, 'Что бы выхотели? Горячее или холодное?');
 
     }
-    else if (text === "горячее") {
+    else if ((text === "горячее") || (text === "Горячее") ) {
         await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе?');
-        if (text==='да'){
-            await bot.sendMessage(chatId, 'Категории напитков, которуые могут вам понравиться, предаставлены ниже', {
+
+    }
+    if (text==='да'){
+        await bot.sendMessage(chatId, 'Категории напитков, которуые могут вам понравиться, предаставлены ниже', {
+            reply_markup: {
+                inline_keyboard: [
+                    [{text: 'Авторский кофе', web_app: {url: WebAppUrl + '/https://tg-bot-2-a0669.web.app/author_coffee'}}],
+                    [{text: 'Классический кофе', web_app: {url: WebAppUrl + '/https://tg-bot-2-a0669.web.app/classic_coffee'}}],
+                ]
+            }
+        })
+        setTimeout(async () => {
+            await bot.sendMessage(chatId, "или попробуете новинки сезона?", {
                 reply_markup: {
                     inline_keyboard: [
-                        [{text: 'Авторский кофе', web_app: {url: WebAppUrl + '/https://tg-bot-2-a0669.web.app/author_coffee'}}],
-                        [{text: 'Классический кофе', web_app: {url: WebAppUrl + '/checkF'}}],
+                        [{text: 'Новинки', web_app: {url: WebAppUrl + '/https://tg-bot-2-a0669.web.app/new'}}],
                     ]
                 }
             })
-        }
+        }, 100)
     }
+
+
     else if (text.indexOf('/') !== -1){
         await bot.sendMessage(chatId, 'Такой команды не существует' + '\n' +
             "/start - Приветсвтие \n" +
