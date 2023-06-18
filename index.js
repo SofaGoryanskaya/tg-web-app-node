@@ -119,15 +119,15 @@ bot.on('message', async (msg) => {
     }
 
     else if ((text === "горячее") || (text === "Горячее") ) {
-        await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе?');
+        await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе? Да или нет?');
     }
 
-    else if (text==='да'){
+    else if ((text==='да') || (text==='Да')){
         await bot.sendMessage(chatId, 'Категории напитков, которуые могут вам понравиться, предаставлены ниже', {
             reply_markup: {
                 inline_keyboard: [
-                    [{text: 'Авторский кофе', web_app: {url: WebAppUrl + '/https://tg-bot-2-a0669.web.app/author_coffee'}}],
-                    [{text: 'Классический кофе', web_app: {url: WebAppUrl + '/https://tg-bot-2-a0669.web.app/classic_coffee'}}],
+                    [{text: 'Авторский кофе', web_app: {url: WebAppUrl + '/author_coffee'}}],
+                    [{text: 'Классический кофе', web_app: {url: WebAppUrl + 'classic_coffee'}}],
                 ]
             }
         })
