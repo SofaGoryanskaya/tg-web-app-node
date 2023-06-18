@@ -122,12 +122,12 @@ bot.on('message', async (msg) => {
         await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе? Да или нет?');
     }
 
-    else if (text === "Да") {
+    else if ((text === "да") || (text === "Да") ) {
         await bot.sendMessage(chatId, 'Категории напитков, которуые могут вам понравиться, предаставлены ниже', {
             reply_markup: {
                 inline_keyboard: [
                     [{text: 'Авторский кофе', web_app: {url: WebAppUrl + '/author_coffee'}}],
-                    [{text: 'Классический кофе', web_app: {url: WebAppUrl + 'classic_coffee'}}],
+                    [{text: 'Классический кофе', web_app: {url: WebAppUrl + '/classic_coffee'}}],
                 ]
             }
         })
@@ -135,7 +135,7 @@ bot.on('message', async (msg) => {
             await bot.sendMessage(chatId, "или попробуете новинки сезона?", {
                 reply_markup: {
                     inline_keyboard: [
-                        [{text: 'Новинки', web_app: {url: WebAppUrl + '/https://tg-bot-2-a0669.web.app/new'}}],
+                        [{text: 'Новинки', web_app: {url: WebAppUrl + '/new'}}],
                     ]
                 }
             })
