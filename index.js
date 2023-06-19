@@ -135,7 +135,7 @@ bot.on('message', async (msg) => {
             await bot.sendMessage(chatId, "или попробуете новинки сезона?", {
                 reply_markup: {
                     inline_keyboard: [
-                        [{text: 'Новинки', web_app: {url: WebAppUrl + '/new_drink'}}],
+                        [{text: 'Новинки', web_app: {url: WebAppUrl + '/new_drinks'}}],
                     ]
                 }
             })
