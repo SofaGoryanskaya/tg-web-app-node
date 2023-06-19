@@ -135,13 +135,49 @@ bot.on('message', async (msg) => {
             await bot.sendMessage(chatId, "или попробуете новинки сезона?", {
                 reply_markup: {
                     inline_keyboard: [
-                        [{text: 'Новинки', web_app: {url: WebAppUrl + '/new'}}],
+                        [{text: 'Новинки', web_app: {url: WebAppUrl + '/new_drink'}}],
                     ]
                 }
             })
         }, 100)
     }
-
+    else if ((text === "да") || (text === "Да") ) {
+        await bot.sendMessage(chatId, 'Категории напитков, которые могут вам понравиться, предаставлены ниже', {
+            reply_markup: {
+                inline_keyboard: [
+                    [{text: 'Авторский кофе', web_app: {url: WebAppUrl + '/author_coffee'}}],
+                    [{text: 'Классический кофе', web_app: {url: WebAppUrl + '/classic_coffee'}}],
+                ]
+            }
+        })
+        setTimeout(async () => {
+            await bot.sendMessage(chatId, "или попробуете новинки сезона?", {
+                reply_markup: {
+                    inline_keyboard: [
+                        [{text: 'Новинки', web_app: {url: WebAppUrl + '/new_drink'}}],
+                    ]
+                }
+            })
+        }, 100)
+    }
+    else if ((text === "нет") || (text === "Нет") ) {
+        await bot.sendMessage(chatId, 'Тогда можем предложить угостить вас сегодня чаем', {
+            reply_markup: {
+                inline_keyboard: [
+                    [{text: 'Чай', web_app: {url: WebAppUrl + '/tea'}}],
+                ]
+            }
+        })
+        setTimeout(async () => {
+            await bot.sendMessage(chatId, "или же что-нибудь из новинок сезона?", {
+                reply_markup: {
+                    inline_keyboard: [
+                        [{text: 'Новинки', web_app: {url: WebAppUrl + '/new_drink'}}],
+                    ]
+                }
+            })
+        }, 100)
+    }
 
     else if (text.indexOf('/') !== -1){
         await bot.sendMessage(chatId, 'Такой команды не существует' + '\n' +
