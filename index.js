@@ -117,10 +117,17 @@ bot.on('message', async (msg) => {
 
     else if(text === '/helpchoice') {
         console.log(msg.text);
-        await bot.sendMessage(chatId, 'Что бы выхотели? Горячее или холодное?');
+        await bot.sendMessage(chatId, 'Что бы выхотели? Горячее или холодное?', {
+            reply_markup: {
+                keyboard: [
+                    [{text: 'Горячее'}],
+                    [{text: 'Холодное'}],
+                ]
+            }
+        })
     }
 
-    else if ((text === "горячее") || (text === "Горячее") ) {
+    else if (text === "Горячее")  {
         await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе? Да или нет?', {
             reply_markup: {
                 keyboard: [
@@ -130,8 +137,17 @@ bot.on('message', async (msg) => {
             }
         })
     }
-
-    else if ((text === "да") || (text === "Да") ) {
+    else if (text === "Холодное")  {
+        await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе? Да или нет?', {
+            reply_markup: {
+                keyboard: [
+                    [{text: 'Да'}],
+                    [{text: 'Нет'}],
+                ]
+            }
+        })
+    }
+    else if (text === "Да")  {
         await bot.sendMessage(chatId, 'Категории напитков, которуые могут вам понравиться, предаставлены ниже', {
             reply_markup: {
                 inline_keyboard: [
@@ -150,7 +166,7 @@ bot.on('message', async (msg) => {
             })
         }, 100)
     }
-    else if ((text === "да") || (text === "Да") ) {
+    else if (text === "Нет") {
         await bot.sendMessage(chatId, 'Категории напитков, которые могут вам понравиться, предаставлены ниже', {
             reply_markup: {
                 inline_keyboard: [
