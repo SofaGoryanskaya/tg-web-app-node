@@ -138,17 +138,25 @@ bot.on('message', async (msg) => {
         })
     }
     else if (text === "Холодное")  {
-        await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе? Да или нет?', {
+        await bot.sendMessage(chatId, 'Тогда предлагаем вам ознакомиться со списком освежающих ', {
             reply_markup: {
-                keyboard: [
-                    [{text: 'Да'}],
-                    [{text: 'Нет'}],
+                inline_keyboard: [
+                    [{text: 'Лимонады, смузи и молочные коктейли', web_app: {url: WebAppUrl + '/cold'}}],
                 ]
             }
         })
+        setTimeout(async () => {
+            await bot.sendMessage(chatId, "Ниже представлены новинки сезона:", {
+                reply_markup: {
+                    inline_keyboard: [
+                        [{text: 'Новинки', web_app: {url: WebAppUrl + '/new_drink'}}],
+                    ]
+                }
+            })
+        }, 100)
     }
     else if (text === "Да")  {
-        await bot.sendMessage(chatId, 'Категории напитков, которуые могут вам понравиться, предаставлены ниже', {
+        await bot.sendMessage(chatId, 'Категории напитков, которые могут вам понравиться, предаставлены ниже', {
             reply_markup: {
                 inline_keyboard: [
                     [{text: 'Авторский кофе', web_app: {url: WebAppUrl + '/author_coffee'}}],
@@ -166,27 +174,9 @@ bot.on('message', async (msg) => {
             })
         }, 100)
     }
-    else if (text === "Нет") {
-        await bot.sendMessage(chatId, 'Категории напитков, которые могут вам понравиться, предаставлены ниже', {
-            reply_markup: {
-                inline_keyboard: [
-                    [{text: 'Авторский кофе', web_app: {url: WebAppUrl + '/author_coffee'}}],
-                    [{text: 'Классический кофе', web_app: {url: WebAppUrl + '/classic_coffee'}}],
-                ]
-            }
-        })
-        setTimeout(async () => {
-            await bot.sendMessage(chatId, "или попробуете новинки сезона?", {
-                reply_markup: {
-                    inline_keyboard: [
-                        [{text: 'Новинки', web_app: {url: WebAppUrl + '/new_drink'}}],
-                    ]
-                }
-            })
-        }, 100)
-    }
-    else if ((text === "нет") || (text === "Нет") ) {
-        await bot.sendMessage(chatId, 'Тогда можем предложить угостить вас сегодня чаем', {
+
+    else if (text === "Нет")  {
+        await bot.sendMessage(chatId, 'Тогда можем угостить вас сегодня чаем, приготовленный как кдассическим методом, так и на основе ягод и фруктов', {
             reply_markup: {
                 inline_keyboard: [
                     [{text: 'Чай', web_app: {url: WebAppUrl + '/tea'}}],
