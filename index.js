@@ -113,13 +113,22 @@ bot.on('message', async (msg) => {
             }
         })
     }
+
+
     else if(text === '/helpchoice') {
         console.log(msg.text);
         await bot.sendMessage(chatId, 'Что бы выхотели? Горячее или холодное?');
     }
 
     else if ((text === "горячее") || (text === "Горячее") ) {
-        await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе? Да или нет?');
+        await bot.sendMessage(chatId, 'Хмм..может быть что-то связанное с кофе? Да или нет?', {
+            reply_markup: {
+                keyboard: [
+                    [{text: 'Да'}],
+                    [{text: 'Нет'}],
+                ]
+            }
+        })
     }
 
     else if ((text === "да") || (text === "Да") ) {
